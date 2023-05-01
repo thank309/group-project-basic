@@ -47,7 +47,7 @@ int nyear(struct students *p){       //Convert the string of year to integer
 int main(){
     int num_student;
     float highest, lowest, hbp; 
-    do{                       //A LOOP ENSURES THAT USERS HAVE TO INPUT A NUMBER SMALLER THAN 1000
+    do{                             //A LOOP ENSURES THAT USERS HAVE TO INPUT A NUMBER SMALLER THAN 1000
         printf("\nThe numbers of students(Max 1000) is: ");     
         scanf("%d", &num_student);
         if(num_student>1000){
