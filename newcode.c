@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 struct students{                //DATA STORES INFORMATIONS OF A STUDENT 
     char id[20];                                           
@@ -11,6 +12,37 @@ struct students{                //DATA STORES INFORMATIONS OF A STUDENT
     float basic;
     float gpa;
 };
+
+struct time{                    //DATA STORES THE DATE OF BIRTH OF A STUDENT
+    int day;
+    int month;
+    int year;
+};
+
+int nday(struct students *p){       //Convert the string of day to integer
+    char nday[20];
+    strncpy(nday, p->birth, 2);
+    return atoi(nday);
+    }
+
+
+int nmonth(struct students *p){       //Convert the string of month to integer
+    char nmonth[20];
+    strncpy(nmonth, p->birth, 5);
+    strnset(nmonth, '0', 3);
+
+    return atoi(nmonth);
+    }
+
+int nyear(struct students *p){       //Convert the string of year to integer
+    char nyear[20];
+    strrev(p->birth);
+    strncat(nyear, p->birth, 4);
+    strrev(nyear);
+
+    return atoi(nyear);
+}
+
 
 int main(){
     int num_student;
@@ -77,12 +109,20 @@ int main(){
             lowest = student[i].gpa ;
         }
     }
-    hbp = 0;
+    hbp = 0;                                 //Find the highest Basic Programming Grade
     for (int i=0; i < num_student; i++){
         if (student[i].basic > hbp){
             hbp = student[i].basic;  
             }
     }
+    
+    struct time date[num_student];
+    for (int i=0; i < num_student; i++){     //Split the date of birth to more detailed sections 
+        date[i].day = nday(&student[i]);         
+        date[i].month = nmonth(&student[i]);
+        date[i].year = nyear(&student[i]);
+    }
+    
     
     return 0;
 }
