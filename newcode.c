@@ -47,7 +47,7 @@ int nyear(struct students *p){       //Convert the string of year to integer
 int main(){
     int num_student;
     float highest, lowest, hbp; 
-    do{                             //A LOOP ENSURES THAT USERS HAVE TO INPUT A NUMBER SMALLER THAN 1000
+    do{                       //A LOOP ENSURES THAT USERS HAVE TO INPUT A NUMBER SMALLER THAN 1000
         printf("\nThe numbers of students(Max 1000) is: ");     
         scanf("%d", &num_student);
         if(num_student>1000){
@@ -81,7 +81,7 @@ int main(){
     
     //Print informations of each student
     for( int i=0; i< num_student; i++){
-        printf("%-15s%-15s%-15s%-12.1f%-12.1f%-20.1f%0.1f\n",student[i].id, strcat(student[i].last_name, student[i].first_name),
+        printf("%-15s%-15s%-15s%-12.2f%-12.2f%-20.2f%0.2f\n",student[i].id, strcat(student[i].last_name, student[i].first_name),
         student[i].birth, student[i].al, student[i].cal, student[i].basic, student[i].gpa);
     };
     
@@ -90,7 +90,7 @@ int main(){
     fprintf(f,"\n%-15s%-15s%-15s%-12s%-12s%-20s%s\n", "StudentID","Full Name","Birthdate","Algebra","Calculus","Basic Programming","GPA");
     fprintf(f,"----------------------------------------------------------------------------------------------\n");
     for( int i=0; i< num_student; i++){
-        fprintf(f, "%-15s%-15s%-15s%-12.1f%-12.1f%-20.1f%0.1f\n",student[i].id, strcat(student[i].last_name, student[i].first_name),
+        fprintf(f, "%-15s%-15s%-15s%-12.2f%-12.2f%-20.2f%0.2f\n",student[i].id, strcat(student[i].last_name, student[i].first_name),
         student[i].birth, student[i].al, student[i].cal, student[i].basic, student[i].gpa);
     }
     fclose(f);
@@ -116,6 +116,10 @@ int main(){
             }
     }
     
+    printf("\nThe Student has highest GPA is: %0.2f", highest);
+    printf("\nThe Student has lowest GPA is: %0.2f", lowest);
+    printf("\nThe Student has highest Basic Programming is: %0.2f", hbp);
+
     struct time date[num_student];
     for (int i=0; i < num_student; i++){     //Split the date of birth to more detailed sections 
         date[i].day = nday(&student[i]);         
