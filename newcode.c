@@ -152,6 +152,20 @@ int main(){
         date[i].year = nyear(&student[i]);
     }
     
+    int index =0;
+    for (int i=0; i < num_student; i++){
+        if(date[index].year < date[i].year || date[index].year == date[i].year){
+            index = i;
+        }
+        else if(date[index].month < date[i].month || date[index].month == date[i].month){
+            index = i;
+        }
+        else if(date[index].day < date[i].day || date[index].day == date[i].day){
+            index = i;
+        }
+    }
+
+    printf("The oldest student: %d", index);
     
     return 0;
 }
