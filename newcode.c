@@ -20,14 +20,14 @@ typedef struct{               //DATA STORES THE DATE OF BIRTH OF A STUDENT
     int year;
 } time;
 
-int nday(students *p){       //Convert the string of day to integer
+int nday(students *p){       //Convert a strings of day to integer
     char nday[20];
     strncpy(nday, p->birth, 2);
     return atoi(nday);
     }
 
 
-int nmonth(students *p){       //Convert the string of month to integer
+int nmonth(students *p){       //Convert a string of month to integer
     char nmonth[20];
     strncpy(nmonth, p->birth, 5);
     strnset(nmonth, '0', 3);
@@ -35,7 +35,7 @@ int nmonth(students *p){       //Convert the string of month to integer
     return atoi(nmonth);
     }
 
-int nyear(students *p){       //Convert the string of year to integer
+int nyear(students *p){       //Convert a string of year to integer
     char nyear[20];
     strrev(p->birth);
     strncat(nyear, p->birth, 4);
@@ -94,7 +94,7 @@ int main(){
 
     //Print informations of each student
     for( int i=0; i< num_student; i++){
-        printf("%-15s%-16s%-15s%-12.2f%-12.2f%-20.2f%0.2f\n",student[i].id, student[i].full_name,
+        printf("%-15s%-15s%-15s%-12.2f%-12.2f%-20.2f%0.2f\n",student[i].id, student[i].full_name,
         student[i].birth, student[i].al, student[i].cal, student[i].basic, student[i].gpa);
     };
     
@@ -103,7 +103,7 @@ int main(){
     fprintf(f,"\n%-15s%-15s%-15s%-12s%-12s%-20s%s\n", "StudentID","Full Name","Birthdate","Algebra","Calculus","Basic Programming","GPA");
     fprintf(f,"----------------------------------------------------------------------------------------------\n");
     for( int i=0; i< num_student; i++){
-        fprintf(f, "%-15s%-16s%-15s%-12.2f%-12.2f%-20.2f%0.2f\n",student[i].id, student[i].full_name,
+        fprintf(f, "%-15s%-15s%-15s%-12.2f%-12.2f%-20.2f%0.2f\n",student[i].id, student[i].full_name,
         student[i].birth, student[i].al, student[i].cal, student[i].basic, student[i].gpa);
     }
     fclose(f);
@@ -132,16 +132,16 @@ int main(){
             }
     }
     
-    printf("\nThe Student has highest GPA is: %s %s\nwith grade is: %0.2f\n",student[highest].id, student[highest].full_name ,high_point);
-    printf("\nThe Student has lowest GPA is: %s %s\nwith grade is: %0.2f\n",student[lowest].id, student[lowest].full_name ,low_point);
-    printf("\nThe Student has highest Basic Programming Grade is: %s %s\nwith grade is: %0.2f\n",student[hbp].id, student[hbp].full_name,hbp_point);
+    printf("\nThe Student has highest GPA is: %s %s\nGPA: %0.2f\n",student[highest].id, student[highest].full_name ,high_point);
+    printf("\nThe Student has lowest GPA is: %s %s\nGPA: %0.2f\n",student[lowest].id, student[lowest].full_name ,low_point);
+    printf("\nThe Student has highest Basic Programming Grade is: %s %s\nGRADE: %0.2f\n",student[hbp].id, student[hbp].full_name,hbp_point);
     
     //Task 6
     printf("\n%-15s%-15s%-15s%s\n", "StudentID","Full Name","Birthdate","The last word in the name");
     printf("------------------------------------------------------------------------\n");
     for (int i=0; i<num_student; i++){
         char word = letter(&student[i]);
-        printf("%-15s%-16s%-15s%c\n", student[i].id, student[i].full_name, student[i].birth, word);
+        printf("%-15s%-15s%-15s%c\n", student[i].id, student[i].full_name, student[i].birth, word);
     }
 
     //Task 7
