@@ -20,6 +20,62 @@ typedef struct{               //DATA STORES THE DATE OF BIRTH OF A STUDENT
     int year;
 } time;
 
+//Functions on task 5
+void highest(students* p, int size){        //Find and print the highest gpa
+  float highest = 0;
+  for(int i = 0; i<size; i++){
+    if (p[i].gpa > highest){
+      highest = p[i].gpa;
+    }
+  }
+  printf("\nThe HIGHEST GPA grade is: %.2f", highest);
+  printf("\n%-15s%-15s%-15s%s", "StudentID","Full Name", "Birthdate", "GPA");
+  printf("\n-------------------------------------------------");
+  for(int i = 0; i<size; i++){
+    if(p[i].gpa == highest){
+      printf("\n%-15s%-15s%-15s%0.2f", p[i].id, p[i].full_name, p[i].birth, p[i].gpa );
+    }
+  }
+  printf("\n");
+};
+
+void lowest(students* p, int size){       //Find and print the lowest gpa
+  float lowest = p[0].gpa;
+  int index = 0;
+  for(int i = 0; i<size; i++){
+    if (p[i].gpa < lowest){
+      lowest = p[i].gpa;
+    }
+  }
+  printf("\nThe LOWEST GPA grade is: %.2f", lowest);
+  printf("\n%-15s%-15s%-15s%s", "StudentID","Full Name", "Birthdate", "GPA");
+  printf("\n-------------------------------------------------");
+  for(int i = 0; i<size; i++){
+    if(p[i].gpa == lowest){
+      printf("\n%-15s%-15s%-15s%0.2f", p[i].id, p[i].full_name, p[i].birth, p[i].gpa );
+    }
+  }
+  printf("\n");
+};
+
+void hbp(students* p, int size){        //Find and print the highest basic programming
+  float hbp = 0;  
+  for(int i = 0; i<size; i++){
+    if (p[i].basic > hbp){
+      hbp = p[i].basic;
+    }
+  }
+  printf("\nThe HIGHEST BASIC PROGRAMMING grade is: %.2f", hbp);
+  printf("\n%-15s%-15s%-15s%s", "StudentID","Full Name", "Birthdate", "GPA");
+  printf("\n-------------------------------------------------");
+  for(int i = 0; i<size; i++){
+    if(p[i].basic == hbp){
+      printf("\n%-15s%-15s%-15s%0.2f", p[i].id, p[i].full_name, p[i].birth, p[i].basic );
+    }
+  }
+  printf("\n");
+};
+
 int nday(students *p){       //Convert a strings of day to integer
     char nday[20];
     strncpy(nday, p->birth, 2);
@@ -55,8 +111,7 @@ char letter(students *p){    //Split a string to a final character of string
 
 int main(){
     int num_student;
-    float high_point, low_point, hbp_point; 
-    int highest, lowest, hbp;
+    
     do{                       //A LOOP ENSURES THAT USERS HAVE TO INPUT A NUMBER SMALLER THAN 1000
         printf("\nThe numbers of students(Max 1000) is: ");     
         scanf("%d", &num_student);
@@ -94,7 +149,7 @@ int main(){
 
     //Print informations of each student
     for( int i=0; i< num_student; i++){
-        printf("%-15s%-15s%-15s%-12.2f%-12.2f%-20.2f%0.2f\n",student[i].id, student[i].full_name,
+        printf("%-15s%-15s%-15s%-12.2f%-12.2f%-20.2f%.2f\n",student[i].id, student[i].full_name,
         student[i].birth, student[i].al, student[i].cal, student[i].basic, student[i].gpa);
     };
     
@@ -103,45 +158,22 @@ int main(){
     fprintf(f,"\n%-15s%-15s%-15s%-12s%-12s%-20s%s\n", "StudentID","Full Name","Birthdate","Algebra","Calculus","Basic Programming","GPA");
     fprintf(f,"----------------------------------------------------------------------------------------------\n");
     for( int i=0; i< num_student; i++){
-        fprintf(f, "%-15s%-15s%-15s%-12.2f%-12.2f%-20.2f%0.2f\n",student[i].id, student[i].full_name,
+        fprintf(f, "%-15s%-15s%-15s%-12.2f%-12.2f%-20.2f%.2f\n",student[i].id, student[i].full_name,
         student[i].birth, student[i].al, student[i].cal, student[i].basic, student[i].gpa);
     }
     fclose(f);
 
     //Task 5
-    high_point = 0;
-    for (int i=0; i < num_student; i++){     //Find the highest GPA
-        if (student[i].gpa > high_point){
-            high_point = student[i].gpa;
-            highest = i;
-        }
-    }
-   
-    low_point = 100;
-    for (int i=0; i < num_student; i++){     //Find the lowest GPA
-        if (student[i].gpa < low_point){
-            low_point = student[i].gpa;
-            lowest = i;
-        }
-    }
-    hbp_point = 0;                           //Find the highest Basic Programming Grade
-    for (int i=0; i < num_student; i++){
-        if (student[i].basic > hbp_point){
-            hbp_point = student[i].basic;
-            hbp = i;  
-            }
-    }
-    
-    printf("\nThe Student has highest GPA is: %s %s\nGPA: %0.2f\n",student[highest].id, student[highest].full_name ,high_point);
-    printf("\nThe Student has lowest GPA is: %s %s\nGPA: %0.2f\n",student[lowest].id, student[lowest].full_name ,low_point);
-    printf("\nThe Student has highest Basic Programming Grade is: %s %s\nGRADE: %0.2f\n",student[hbp].id, student[hbp].full_name,hbp_point);
+
+    highest(student, num_student);
+    lowest(student, num_student);
+    hbp(student, num_student);   
     
     //Task 6
     printf("\n%-15s%-15s%-15s%s\n", "StudentID","Full Name","Birthdate","The last word in the name");
     printf("------------------------------------------------------------------------\n");
     for (int i=0; i<num_student; i++){
-        char word = letter(&student[i]);
-        printf("%-15s%-15s%-15s%c\n", student[i].id, student[i].full_name, student[i].birth, word);
+        printf("%-15s%-15s%-15s%c\n", student[i].id, student[i].full_name, student[i].birth, student[i].last_name);
     }
 
     //Task 7
@@ -165,7 +197,7 @@ int main(){
         }
     }
 
-    printf("The oldest student: %d", index);
+    printf("\nThe oldest student: %d", index);
     
     return 0;
 }
