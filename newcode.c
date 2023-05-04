@@ -141,6 +141,7 @@ int main(){
         strcat(student[i].full_name, " ");
         strcat(student[i].full_name, student[i].first_name);
         strupr(student[i].full_name);
+        strupr(student[i].last_name);
     }
 
     //Print the header as the follwing code
@@ -171,9 +172,9 @@ int main(){
     
     //Task 6
     printf("\n%-15s%-15s%-15s%s\n", "StudentID","Full Name","Birthdate","The last word in the name");
-    printf("------------------------------------------------------------------------\n");
+    printf("-----------------------------------------------------------------------\n");
     for (int i=0; i<num_student; i++){
-        printf("%-15s%-15s%-15s%c\n", student[i].id, student[i].full_name, student[i].birth, student[i].last_name);
+        printf("%-15s%-15s%-15s%s\n", student[i].id, student[i].full_name, student[i].birth, student[i].last_name);
     }
 
     //Task 7
