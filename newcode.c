@@ -30,7 +30,7 @@ void highest(students* p, int size){        //Find and print the highest gpa
   }
   printf("\nThe HIGHEST GPA grade is: %.2f", highest);
   printf("\n%-15s%-15s%-15s%s", "StudentID","Full Name", "Birthdate", "GPA");
-  printf("\n-------------------------------------------------");
+  printf("\n---------------------------------------------------");
   for(int i = 0; i<size; i++){
     if(p[i].gpa == highest){
       printf("\n%-15s%-15s%-15s%0.2f", p[i].id, p[i].full_name, p[i].birth, p[i].gpa );
@@ -49,7 +49,7 @@ void lowest(students* p, int size){       //Find and print the lowest gpa
   }
   printf("\nThe LOWEST GPA grade is: %.2f", lowest);
   printf("\n%-15s%-15s%-15s%s", "StudentID","Full Name", "Birthdate", "GPA");
-  printf("\n-------------------------------------------------");
+  printf("\n---------------------------------------------------");
   for(int i = 0; i<size; i++){
     if(p[i].gpa == lowest){
       printf("\n%-15s%-15s%-15s%0.2f", p[i].id, p[i].full_name, p[i].birth, p[i].gpa );
@@ -66,8 +66,8 @@ void hbp(students* p, int size){        //Find and print the highest basic progr
     }
   }
   printf("\nThe HIGHEST BASIC PROGRAMMING grade is: %.2f", hbp);
-  printf("\n%-15s%-15s%-15s%s", "StudentID","Full Name", "Birthdate", "GPA");
-  printf("\n-------------------------------------------------");
+  printf("\n%-15s%-15s%-15s%s", "StudentID","Full Name", "Birthdate", "BP GRADE");
+  printf("\n---------------------------------------------------");
   for(int i = 0; i<size; i++){
     if(p[i].basic == hbp){
       printf("\n%-15s%-15s%-15s%0.2f", p[i].id, p[i].full_name, p[i].birth, p[i].basic );
