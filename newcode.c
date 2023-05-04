@@ -66,7 +66,7 @@ void hbp(students* p, int size){        //Find and print the highest basic progr
     }
   }
   printf("\nThe HIGHEST BASIC PROGRAMMING grade is: %.2f", hbp);
-  printf("\n%-15s%-15s%-15s%s", "StudentID","Full Name", "Birthdate", "BP GRADE");
+  printf("\n%-15s%-15s%-15s%s", "StudentID","Full Name", "Birthdate", "GRADE");
   printf("\n---------------------------------------------------");
   for(int i = 0; i<size; i++){
     if(p[i].basic == hbp){
