@@ -18,17 +18,16 @@ void highest(students* p, int size){
   float highest = 0;
   int index = 0;
   for (int i = 0; i<size; i++, p++){
-    if ((p->gpa) > highest){
+    if (p[i].gpa > highest){
       index = i;
-      printf("\nThe HIGHEST GPA is: %0.2f", highest);
+      printf("\nThe HIGHEST GPA is: %0.2f\n", highest);
       printf("\n%-15s%-15s%-15s%s", "StudentID","Full Name", "Birthdate", "GPA");
       printf("\n-------------------------------------------------");
-      printf("\n%-15s%-15s%-15s%0.2f", (p->id)[index], (p->full_name)[index], (p->birth)[index], (p->gpa)[index] );
-
+      printf("\n%-15s%-15s%-15s%0.2f", p[index].id, p[index].full_name, p[index].birth, p[index].gpa );
     }
-    else if((p->gpa) == highest){
+    else if(p[i].gpa == highest){
       index = i;
-      printf("\n%-15s%-15s%-15s%0.2f", (p->id)[index], (p->full_name)[index], (p->birth)[index], (p->gpa)[index] );
+      printf("\n%-15s%-15s%-15s%0.2f", p[index].id, p[index].full_name, p[index].birth, p[index].gpa );
     }
   }
 };
