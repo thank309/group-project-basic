@@ -174,7 +174,7 @@ int main(){
     printf("\n%-15s%-15s%-15s%s\n", "StudentID","Full Name","Birthdate","The last word in the name");
     printf("-----------------------------------------------------------------------\n");
     for (int i=0; i<num_student; i++){
-        printf("%-15s%-15s%-15s%s\n", student[i].id, student[i].full_name, student[i].birth, student[i].last_name);
+        printf("%-15s%-15s%-15s%s\n", student[i].id, student[i].full_name, student[i].birth, student[i].first_name);
     }
 
     //Task 7
