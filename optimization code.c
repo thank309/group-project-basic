@@ -124,12 +124,7 @@ int main()
     scanf("%s", student[i].birth);
     int len = strlen(student[i].birth);
     for(int x = 0; true; x++){
-      if(len < 10 || len >10){
-        printf("You might input wrong pattern, please do it as DD/MM/YYYY");
-        printf("\nWhat's your birthday(DD/MM/YYYY): ");
-        scanf("%s", student[i].birth);
-        continue;
-      }
+  
       if(isalpha((student[i].birth)[x]) != 0 && (x != 2 || x != 5)){
         printf("\nYou might input a character not a number");
         printf("\nWhat's your birthday(DD/MM/YYYY): ");
