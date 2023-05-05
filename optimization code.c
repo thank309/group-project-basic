@@ -14,6 +14,7 @@ typedef struct
   float basic;
   float gpa;
   char first_name[20];
+  char last_name[20];
 } students;
 
 // Functions on task 5
@@ -86,8 +87,7 @@ void hbp(students *p, int size)
   printf("\n");
 };
 
-int main()
-{
+int main(){
   int num_student;
 
   do
@@ -106,25 +106,44 @@ int main()
     printf("\nThe ID student %d : ", i + 1);
     scanf("%s", student[i].id);
 
-    printf("\nThe full name of student %d : ", i + 1);
-    scanf("%s", student[i].full_name);
+    printf("\nThe first name of student %d : ", i + 1);
+    scanf("%s", student[i].first_name);
     for(int x = 0; true; x++){
-      if (isalpha((student[i].full_name)[x]) != 0){
+      if (isalpha((student[i].first_name)[x]) != 0){
         break;
       }
       else{
         printf("\nInvalid value, please type as letters");
-        printf("\nThe full name of student %d : ", i + 1);
-        scanf("%s", student[i].full_name);
+        printf("\nThe first name of student %d : ", i + 1);
+        scanf("%s", student[i].first_name);
         continue;
       }
     }  
+    
+    printf("\nThe last name of student %d : ", i + 1);
+    scanf("%s", student[i].last_name);
+    for(int x = 0; true; x++){
+      if (isalpha((student[i].last_name)[x]) != 0){
+        break;
+      }
+      else{
+        printf("\nInvalid value, please type as letters");
+        printf("\nThe last name of student %d : ", i + 1);
+        scanf("%s", student[i].last_name);
+        continue;
+      }
+    } 
 
     printf("What's your birthday(DD/MM/YYYY): ");
     scanf("%s", student[i].birth);
-    int len = strlen(student[i].birth);
     for(int x = 0; true; x++){
-  
+      int len = strlen(student[i].birth);
+      if( len != 10){
+        printf("\nYou might input not enough numbers of characters");
+        printf("\nWhat's your birthday(DD/MM/YYYY): ");
+        scanf("%s",student[i].birth);
+        continue;
+      }
       if(isalpha((student[i].birth)[x]) != 0 && (x != 2 || x != 5)){
         printf("\nYou might input a character not a number");
         printf("\nWhat's your birthday(DD/MM/YYYY): ");
@@ -141,7 +160,6 @@ int main()
         break;
       }
     }  
-
     
     printf("The score Alebra of student %d : ", i + 1);
     scanf("%f", &student[i].al);
@@ -150,7 +168,11 @@ int main()
     printf("The score Basic Programming of student %d : ", i + 1);
     scanf("%f", &student[i].basic);
     student[i].gpa = (student[i].al + student[i].basic + student[i].cal) / 3;
-
+    strcpy(student[i].full_name, student[i].last_name);          //Assign full name to each student by merging last name + white space + full name
+    strcat(student[i].full_name, " ");
+    strcat(student[i].full_name, student[i].first_name);
+    strupr(student[i].full_name);
+    strupr(student[i].last_name);
   }
     
 
@@ -159,8 +181,7 @@ int main()
   printf("----------------------------------------------------------------------------------------------\n");
 
   // Print informations of each student
-  for (int i = 0; i < num_student; i++)
-  {
+  for (int i = 0; i < num_student; i++){
     printf("%-15s%-15s%-15s%-12.2f%-12.2f%-20.2f%.2f\n", student[i].id, student[i].full_name,
            student[i].birth, student[i].al, student[i].cal, student[i].basic, student[i].gpa);
   };
@@ -169,8 +190,7 @@ int main()
   FILE *f = fopen("Lists of Students.txt", "w");
   fprintf(f, "\n%-15s%-15s%-15s%-12s%-12s%-20s%s\n", "StudentID", "Full Name", "Birthdate", "Algebra", "Calculus", "Basic Programming", "GPA");
   fprintf(f, "----------------------------------------------------------------------------------------------\n");
-  for (int i = 0; i < num_student; i++)
-  {
+  for (int i = 0; i < num_student; i++){
     fprintf(f, "%-15s%-15s%-15s%-12.2f%-12.2f%-20.2f%.2f\n", student[i].id, student[i].full_name,
             student[i].birth, student[i].al, student[i].cal, student[i].basic, student[i].gpa);
   }
@@ -185,8 +205,7 @@ int main()
   // Task 6
   printf("\n%-15s%-15s%-15s%s\n", "StudentID", "Full Name", "Birthdate", "The last word in the name");
   printf("-----------------------------------------------------------------------\n");
-  for (int i = 0; i < num_student; i++)
-  {
+  for (int i = 0; i < num_student; i++){
     printf("%-15s%-15s%-15s%s\n", student[i].id, student[i].full_name, student[i].birth, student[i].first_name);
   }
 
