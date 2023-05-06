@@ -29,8 +29,7 @@ void highest(students *p, int size){ // Find and print the highest gpa
   printf("\n");
 };
 
-void lowest(students *p, int size)
-{ // Find and print the lowest gpa
+void lowest(students *p, int size){ // Find and print the lowest gpa
   float lowest = p[0].gpa;
   int index = 0;
   for (int i = 0; i < size; i++)
@@ -43,8 +42,7 @@ void lowest(students *p, int size)
   printf("\nThe LOWEST GPA grade is: %.2f", lowest);
   printf("\n%-15s%-15s%-15s%s", "StudentID", "Full Name", "Birthdate", "GPA");
   printf("\n---------------------------------------------------");
-  for (int i = 0; i < size; i++)
-  {
+  for (int i = 0; i < size; i++){
     if (p[i].gpa == lowest)
     {
       printf("\n%-15s%-15s%-15s%0.2f", p[i].id, p[i].full_name, p[i].birth, p[i].gpa);
@@ -53,8 +51,7 @@ void lowest(students *p, int size)
   printf("\n");
 };
 
-void hbp(students *p, int size)
-{ // Find and print the highest basic programming
+void hbp(students *p, int size){ // Find and print the highest basic programming
   float hbp = 0;
   for (int i = 0; i < size; i++)
   {
@@ -66,8 +63,7 @@ void hbp(students *p, int size)
   printf("\nThe HIGHEST BASIC PROGRAMMING grade is: %.2f", hbp);
   printf("\n%-15s%-15s%-15s%s", "StudentID", "Full Name", "Birthdate", "GRADE");
   printf("\n---------------------------------------------------");
-  for (int i = 0; i < size; i++)
-  {
+  for (int i = 0; i < size; i++){
     if (p[i].basic == hbp)
     {
       printf("\n%-15s%-15s%-15s%0.2f", p[i].id, p[i].full_name, p[i].birth, p[i].basic);
@@ -192,7 +188,7 @@ int main(){
     strupr(student[i].first_name);
   }
   
-  //Task 2
+  //Task 3
   // Print the header as the follwing code  
   printf("\n%-15s%-15s%-15s%-12s%-12s%-20s%s\n", "StudentID", "Full Name", "Birthdate", "Algebra", "Calculus", "Basic Programming", "GPA");
   printf("----------------------------------------------------------------------------------------------\n");
