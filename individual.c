@@ -88,9 +88,8 @@ void hbp(students *p, int size)
 };
 
 int main(){
-  int num_student;           //Common task
-  do
-  { // A LOOP ENSURES THAT USERS HAVE TO INPUT A NUMBER SMALLER THAN 1000
+  int num_student;           
+  do{ // A LOOP ENSURES THAT USERS HAVE TO INPUT A NUMBER SMALLER THAN 1000
     printf("\nThe numbers of students(Max 1000) is: ");
     scanf("%d", &num_student);
     if (num_student > 1000)
@@ -133,7 +132,7 @@ int main(){
       }
     } 
 
-    printf("What's your birthday(DD/MM/YYYY): ");
+    printf("\nWhat's your birthday(DD/MM/YYYY): ");
     scanf("%s", student[i].birth);
     for(int x = 0; true; x++){
       int len = strlen(student[i].birth);
@@ -160,12 +159,42 @@ int main(){
       }
     }  
     
-    printf("The score Alebra of student %d : ", i + 1);
-    scanf("%f", &student[i].al);
-    printf("The score Calculus of student %d : ", i + 1);
-    scanf("%f", &student[i].cal);
-    printf("The score Basic Programming of student %d : ", i + 1);
-    scanf("%f", &student[i].basic);
+    while(true){
+      printf("\nThe score Alebra of student %d : ", i + 1);
+      scanf("%f", &student[i].al);
+      if(student[i].al > 20 || student[i].al <0){
+        printf("\nOut the range of band Alebra (0 to 20), please try again");
+        continue;
+      }
+      else{
+        break;
+      }
+    }
+    
+    while(true){
+      printf("\nThe score Calculus of student %d : ", i + 1);
+      scanf("%f", &student[i].cal);
+      if(student[i].cal > 20 || student[i].cal <0){
+        printf("\nOut the range of Algebra (0 to 20), please try again");
+        continue;
+      }
+      else{
+        break;
+      }
+    }
+
+    while(true){
+      printf("\nThe score Basic Programming of student %d : ", i + 1);
+      scanf("%f", &student[i].basic);
+      if(student[i].basic > 20 || student[i].basic <0){
+        printf("\nOut the range of Basic Programming (0 to 20), please try again");
+        continue;
+      }
+      else{
+        break;
+      }
+    }
+
     student[i].gpa = (student[i].al + student[i].basic + student[i].cal) / 3;
     strcpy(student[i].full_name, student[i].last_name);          //Assign full name to each student by merging last name + white space + full name
     strcat(student[i].full_name, " ");
