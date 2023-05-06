@@ -209,6 +209,8 @@ int main(){
             student[i].birth, student[i].al, student[i].cal, student[i].basic, student[i].gpa);
   }
   fclose(f);
+  
+  printf("The File 'List of Student.txt' has been printed out succesfully, please check in your folder ");
 
   //Task 5
 
@@ -222,7 +224,8 @@ int main(){
   for (int i = 0; i < num_student; i++){
     printf("%-15s%-15s%-15s%s\n", student[i].id, student[i].full_name, student[i].birth, student[i].first_name);
   }
-
+  
+  //Task 7
   findoldest(student, num_student);
   return 0;
 }
